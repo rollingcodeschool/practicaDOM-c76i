@@ -12,22 +12,40 @@ const cambiarTitulo = () => {
 };
 
 const verMas = () => {
-  console.log("desde la funcion verMas");
-  // OPCION 1
-  //crear un parrafo nuevo
+
+    //quiero buscar el nodo padre para el nuevo parrafo
+    const seccionDatos = document.getElementsByClassName("mt-5");
+if(btnVerMas.innerText === 'Ver mas...'){
+// OPCION 1
+//   //crear un parrafo nuevo
   const parrafoNuevo = document.createElement("p"); //<p></p>
   parrafoNuevo.innerHTML =
     "También puedes añadir oyentes de eventos para responder a interacciones del usuario, como clics o pulsaciones de teclas. Es crucial tener en cuenta el rendimiento al manipular el DOM, ya que operaciones frecuentes pueden impactar en el rendimiento de la página. En resumen, el DOM proporciona una interfaz poderosa para manipular la estructura y el contenido de una página web, lo que permite crear interacciones dinámicas y experiencias personalizadas para los usuarios.";
   parrafoNuevo.className = "lead";
   console.log(parrafoNuevo);
   //agregar el parrafo en el HTML
-  //quiero buscar el nodo padre para el nuevo parrafo
-  const seccionDatos = document.getElementsByClassName("mt-5");
   console.log(seccionDatos[0]);
   //agregar un nuevo nodo hijo
   // seccionDatos[0].appendChild(parrafoNuevo); //agrego el nodo al final
   // seccionDatos[0].prepend(parrafoNuevo); //agrega un nuevo nodo al principio
   seccionDatos[0].insertBefore(parrafoNuevo, btnVerMas);
+
+// OPCION 2
+//  seccionDatos[0].innerHTML += `<p>También puedes añadir oyentes de eventos para responder a interacciones del usuario, como clics o pulsaciones de teclas. Es crucial tener en cuenta el rendimiento al manipular el DOM, ya que operaciones frecuentes pueden impactar en el rendimiento de la página. En resumen, el DOM proporciona una interfaz poderosa para manipular la estructura y el contenido de una página web, lo que permite crear interacciones dinámicas y experiencias personalizadas para los usuarios.</p>`;
+// console.log(btnVerMas);
+
+  btnVerMas.innerHTML = 'Ocultar'
+  btnVerMas.className = 'btn btn-danger'
+
+}else{
+    console.log('aqui deberia borrar el parrafo')
+    console.log(seccionDatos[0].children[2]);
+    //eliminar un nodo hijo
+    seccionDatos[0].removeChild(seccionDatos[0].children[2]);
+
+    btnVerMas.innerText = 'Ver mas...';
+    btnVerMas.className = 'btn btn-outline-info';
+}
 };
 
 const btnVerMas = document.getElementById("btnVerMas");
