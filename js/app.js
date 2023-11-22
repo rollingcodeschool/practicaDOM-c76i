@@ -48,9 +48,25 @@ if(btnVerMas.innerText === 'Ver mas...'){
 }
 };
 
+// Event
+const obtenerDatos = (e) =>{
+    e.preventDefault();
+    console.log(e)
+    console.log('desde la funcion obtener datos 😅');
+    const inputBusqueda = document.querySelector('.form-control').value
+    console.log(inputBusqueda);
+    //resetear el form
+    formularioBusqueda.reset();
+}
+
 const btnVerMas = document.getElementById("btnVerMas");
 
 //agregar un manejador de eventos
 btnVerMas.addEventListener("click", verMas);
 //si la funcion a llamar lleva parametros guardarla en una funcion anonima
 // btnVerMas.addEventListener('click', ()=>{verMas('prueba de parametro')});
+
+const formularioBusqueda = document.querySelector('form');
+console.log(formularioBusqueda);
+
+formularioBusqueda.addEventListener('submit', obtenerDatos)
